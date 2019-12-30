@@ -60,3 +60,9 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+#nested_form
+gem 'nested_form', '~> 0.3.2'
+#jquery
+gem 'jquery-rails'
+#select2
+gem "select2-rails"

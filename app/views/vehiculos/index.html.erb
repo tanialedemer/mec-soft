@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Vehiculos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Client</th>
+      <th>Modelo</th>
+      <th>Color</th>
+      <th>Matricula</th>
+      <th>Marca</th>
+      <th>Km</th>
+      <th>Chasis</th>
+      <th>Year fab</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vehiculos.each do |vehiculo| %>
+      <tr>
+        <td><%= vehiculo.client.nombre %>, <%= vehiculo.client.apellido %></td>
+        <td><%= vehiculo.modelo %></td>
+        <td><%= vehiculo.color %></td>
+        <td><%= vehiculo.matricula %></td>
+        <td><%= vehiculo.marca %></td>
+        <td><%= vehiculo.km %></td>
+        <td><%= vehiculo.chasis %></td>
+        <td><%= vehiculo.year_fab %></td>
+        <td><%= link_to 'Show', client_vehiculo_path(@client,vehiculo) %></td>
+        <td><%= link_to 'Edit', edit_client_vehiculo_path(@client,vehiculo) %></td>
+        <td><%= link_to 'Destroy', client_vehiculo_path(@client,vehiculo), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vehiculo', new_client_vehiculo_path(@client) %>

@@ -1,0 +1,58 @@
+<%= nested_form_for([@client,@vehiculo], local: true) do |form| %>
+  <% if vehiculo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(vehiculo.errors.count, "error") %> prohibited this vehiculo from being saved:</h2>
+
+      <ul>
+      <% vehiculo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :client_id %>
+    <%#= form.collection_select(:client, :client_id, Client.find(:all), :id, :nombre, prompt: true) %>
+     <%= form.collection_select(:client, Client.all, :id, :nombre_apellido_ruc, {prompt: "Seleccionar un cliente"}, {:class=>'js-searchable'})%>
+  </div>
+
+  <div class="field">
+    <%= form.label :modelo %>
+    <%= form.text_field :modelo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :color %>
+    <%= form.text_field :color %>
+  </div>
+
+  <div class="field">
+    <%= form.label :matricula %>
+    <%= form.text_field :matricula %>
+  </div>
+
+  <div class="field">
+    <%= form.label :marca %>
+    <%= form.text_field :marca %>
+  </div>
+
+  <div class="field">
+    <%= form.label :km %>
+    <%= form.text_field :km %>
+  </div>
+
+  <div class="field">
+    <%= form.label :chasis %>
+    <%= form.text_field :chasis %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year_fab %>
+    <%= form.number_field :year_fab %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

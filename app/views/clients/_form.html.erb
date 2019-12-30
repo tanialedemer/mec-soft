@@ -1,0 +1,89 @@
+<%= form_with(model: client, local: true) do |form| %>
+  <% if client.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
+
+      <ul>
+      <% client.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="container">
+  <div class="field">
+    <strong>Datos del Cliente</strong>
+    <hr>
+    <%= form.label :ruc %>
+    <%= form.number_field :ruc , class:"form-control"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :nombre %>
+    <%= form.text_field :nombre %>
+  </div>
+
+  <div class="field">
+    <%= form.label :apellido %>
+    <%= form.text_field :apellido %>
+  </div>
+
+  <div class="field">
+    <%= form.label :direccion %>
+    <%= form.text_field :direccion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :telefono %>
+    <%= form.text_field :telefono %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <%= form.fields_for :vehiculos do |vehiculo_form| %>
+  <strong>Datos del Vehículo</strong>
+<hr>
+  <div class="field">
+    <%= vehiculo_form.label :modelo %>
+    <%= vehiculo_form.text_field :modelo %>
+  </div>
+
+  <div class="field">
+    <%= vehiculo_form.label :color %>
+    <%= vehiculo_form.text_field :color %>
+  </div>
+
+  <div class="field">
+    <%= vehiculo_form.label :matricula %>
+    <%= vehiculo_form.text_field :matricula %>
+  </div>
+
+  <div class="field">
+    <%= vehiculo_form.label :marca %>
+    <%= vehiculo_form.text_field :marca %>
+  </div>
+
+  <div class="field">
+    <%= vehiculo_form.label :km %>
+    <%= vehiculo_form.text_field :km %>
+  </div>
+
+  <div class="field">
+    <%= vehiculo_form.label :chasis %>
+    <%= vehiculo_form.text_field :chasis %>
+  </div>
+
+  <div class="field">
+    <%= vehiculo_form.label :year_fab %>
+    <%= vehiculo_form.number_field :year_fab %>
+  </div>
+<% end %>
+
+  <div class="actions">
+    <%= form.submit "Guardar"%>
+  </div>
+<% end %>
+</div>
