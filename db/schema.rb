@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_30_052621) do
+ActiveRecord::Schema.define(version: 2019_12_30_053915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,33 @@ ActiveRecord::Schema.define(version: 2019_12_30_052621) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "compras", force: :cascade do |t|
+    t.date "fecha"
+    t.bigint "proveedor_id"
+    t.integer "num_fact"
+    t.float "total"
+    t.float "pago"
+    t.float "saldo"
+    t.bigint "tipo_factura_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["proveedor_id"], name: "index_compras_on_proveedor_id"
+    t.index ["tipo_factura_id"], name: "index_compras_on_tipo_factura_id"
+  end
+
+  create_table "detalle_compras", force: :cascade do |t|
+    t.bigint "compra_id"
+    t.bigint "repuesto_servicio_id"
+    t.integer "cantidad"
+    t.float "precio_unitario"
+    t.float "precio_venta"
+    t.float "subtotal"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["compra_id"], name: "index_detalle_compras_on_compra_id"
+    t.index ["repuesto_servicio_id"], name: "index_detalle_compras_on_repuesto_servicio_id"
   end
 
   create_table "proveedors", force: :cascade do |t|
@@ -54,6 +81,12 @@ ActiveRecord::Schema.define(version: 2019_12_30_052621) do
     t.index ["category_id"], name: "index_repuesto_servicios_on_category_id"
   end
 
+  create_table "tipo_facturas", force: :cascade do |t|
+    t.string "descripcion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "vehiculos", force: :cascade do |t|
     t.bigint "client_id"
     t.string "modelo"
@@ -68,6 +101,10 @@ ActiveRecord::Schema.define(version: 2019_12_30_052621) do
     t.index ["client_id"], name: "index_vehiculos_on_client_id"
   end
 
+  add_foreign_key "compras", "proveedors"
+  add_foreign_key "compras", "tipo_facturas"
+  add_foreign_key "detalle_compras", "compras"
+  add_foreign_key "detalle_compras", "repuesto_servicios"
   add_foreign_key "repuesto_servicios", "categories"
   add_foreign_key "vehiculos", "clients"
 end

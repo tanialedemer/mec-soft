@@ -1,0 +1,47 @@
+<%= form_with(model: detalle_compra, local: true) do |form| %>
+  <% if detalle_compra.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(detalle_compra.errors.count, "error") %> prohibited this detalle_compra from being saved:</h2>
+
+      <ul>
+      <% detalle_compra.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :compra_id %>
+    <%= form.text_field :compra_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :repuesto_servicio_id %>
+    <%= form.text_field :repuesto_servicio_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cantidad %>
+    <%= form.number_field :cantidad %>
+  </div>
+
+  <div class="field">
+    <%= form.label :precio_unitario %>
+    <%= form.text_field :precio_unitario %>
+  </div>
+
+  <div class="field">
+    <%= form.label :precio_venta %>
+    <%= form.text_field :precio_venta %>
+  </div>
+
+  <div class="field">
+    <%= form.label :subtotal %>
+    <%= form.text_field :subtotal %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

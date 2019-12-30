@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @compra.fecha %>
+</p>
+
+<p>
+  <strong>Proveedor:</strong>
+  <%= @compra.proveedor %>
+</p>
+
+<p>
+  <strong>Num fact:</strong>
+  <%= @compra.num_fact %>
+</p>
+
+<p>
+  <strong>Total:</strong>
+  <%= @compra.total %>
+</p>
+
+<p>
+  <strong>Pago:</strong>
+  <%= @compra.pago %>
+</p>
+
+<p>
+  <strong>Saldo:</strong>
+  <%= @compra.saldo %>
+</p>
+
+<p>
+  <strong>Tipo factura:</strong>
+  <%= @compra.tipo_factura %>
+</p>
+
+<%= link_to 'Edit', edit_compra_path(@compra) %> |
+<%= link_to 'Back', compras_path %>

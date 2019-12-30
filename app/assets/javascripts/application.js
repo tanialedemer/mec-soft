@@ -11,14 +11,15 @@
 // about supported directives.
 //
 //= require jquery3 
-
 //= require select2
 //= require jquery_nested_form
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-
+$(document).ready( function () {
+    $('#table_id').DataTable();
+} );
 $(document).ready(function(){
   // Turn on js-selectable class so that it becomes SELCT 2 tag
   $('.js-searchable').select2({

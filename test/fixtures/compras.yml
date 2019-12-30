@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fecha: 2019-12-30
+  proveedor: one
+  num_fact: 1
+  total: 1.5
+  pago: 1.5
+  saldo: 1.5
+  tipo_factura: one
+
+two:
+  fecha: 2019-12-30
+  proveedor: two
+  num_fact: 1
+  total: 1.5
+  pago: 1.5
+  saldo: 1.5
+  tipo_factura: two

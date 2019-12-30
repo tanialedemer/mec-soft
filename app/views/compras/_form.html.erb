@@ -1,0 +1,51 @@
+<%= form_with(model: compra, local: true) do |form| %>
+  <% if compra.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(compra.errors.count, "error") %> prohibited this compra from being saved:</h2>
+
+      <ul>
+      <% compra.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= form.label :num_fact %>
+    <%= form.number_field :num_fact %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fecha %>
+    <%= form.date_field :fecha %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tipo_factura_id %>
+        <%= form.collection_select(:tipo_factura_id, TipoFactura.all, :id, :descripcion)%>
+  </div>
+  <div class="field">
+    <%= form.label :proveedor_id %>
+    <%= form.collection_select(:proveedor_id, Proveedor.all, :id, :nombre_ruc, {prompt: "Seleccionar un proveedor"}, {:class=>'js-searchable'})%>
+  </div>
+
+  <div class="field">
+    <%= form.label :total %>
+    <%= form.text_field :total %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pago %>
+    <%= form.text_field :pago %>
+  </div>
+
+  <div class="field">
+    <%= form.label :saldo %>
+    <%= form.text_field :saldo %>
+  </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
