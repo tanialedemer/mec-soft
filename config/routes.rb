@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :repuesto_servicios
+  resources :categories
+  resources :proveedors
   resources :clients do
   	resources :vehiculos
   end

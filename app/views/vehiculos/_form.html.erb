@@ -13,7 +13,6 @@
 
   <div class="field">
     <%= form.label :client_id %>
-    <%#= form.collection_select(:client, :client_id, Client.find(:all), :id, :nombre, prompt: true) %>
      <%= form.collection_select(:client, Client.all, :id, :nombre_apellido_ruc, {prompt: "Seleccionar un cliente"}, {:class=>'js-searchable'})%>
   </div>
 

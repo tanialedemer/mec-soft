@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_28_053845) do
+ActiveRecord::Schema.define(version: 2019_12_30_052621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "descripcion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "clients", force: :cascade do |t|
     t.integer "ruc"
@@ -24,6 +30,28 @@ ActiveRecord::Schema.define(version: 2019_12_28_053845) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "proveedors", force: :cascade do |t|
+    t.integer "ruc"
+    t.string "nombre"
+    t.string "direccion"
+    t.string "telefono"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "repuesto_servicios", force: :cascade do |t|
+    t.string "codigo"
+    t.string "descripcion"
+    t.integer "stock"
+    t.float "costo"
+    t.float "precio_venta"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_repuesto_servicios_on_category_id"
   end
 
   create_table "vehiculos", force: :cascade do |t|
@@ -40,5 +68,6 @@ ActiveRecord::Schema.define(version: 2019_12_28_053845) do
     t.index ["client_id"], name: "index_vehiculos_on_client_id"
   end
 
+  add_foreign_key "repuesto_servicios", "categories"
   add_foreign_key "vehiculos", "clients"
 end
