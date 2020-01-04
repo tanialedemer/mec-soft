@@ -1,47 +1,36 @@
-<%= form_with(model: detalle_compra, local: true) do |form| %>
-  <% if detalle_compra.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(detalle_compra.errors.count, "error") %> prohibited this detalle_compra from being saved:</h2>
+<%= form_for([@compra,@detalle_compra], remote: true) do |form| %>
 
-      <ul>
-      <% detalle_compra.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :compra_id %>
-    <%= form.text_field :compra_id %>
+<div  align="center">
+<!--   <div class="col-12">
+  <div class="form-group">
+    <%#= form.text_field :repuesto_servicio_id , placeholder: 'Artículo', class: 'form-control'%>
+  </div> -->
+ <div class="form-group">
+    <%= form.label :repuesto_servicio_id ,"Artículo"%> <br>
+    <%= form.collection_select :repuesto_servicio_id, RepuestoServicio.order(:descripcion), :id, :descripcion, {prompt: "Buscar Artículo"},{:class=> "chosen-select form-control js-example-matcher-start"} %>
+  </div>
+  </div>
+  <div class="col-12">
+  <div class="form-group">
+    <%= form.text_field :cantidad, placeholder: 'Cantidad', class: 'form-control' %>
+  </div>
   </div>
 
-  <div class="field">
-    <%= form.label :repuesto_servicio_id %>
-    <%= form.text_field :repuesto_servicio_id %>
+  <div class="col-12">
+  <div class="form-group">
+    <%= form.text_field :precio_unitario, placeholder: 'Precio Unitario', class: 'form-control' %>
   </div>
-
-  <div class="field">
-    <%= form.label :cantidad %>
-    <%= form.number_field :cantidad %>
   </div>
-
-  <div class="field">
-    <%= form.label :precio_unitario %>
-    <%= form.text_field :precio_unitario %>
+  <div class="col-12">
+  <div class="form-group">
+    <%= form.text_field :precio_venta, placeholder: 'Precio Venta', class: 'form-control' %>
   </div>
-
-  <div class="field">
-    <%= form.label :precio_venta %>
-    <%= form.text_field :precio_venta %>
   </div>
-
-  <div class="field">
-    <%= form.label :subtotal %>
-    <%= form.text_field :subtotal %>
-  </div>
-
+</div>
+<br>
+  <div class="modal-footer">
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Guardar', class: 'btn btn-success form-control' %>
+  </div>
   </div>
 <% end %>

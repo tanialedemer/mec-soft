@@ -1,6 +1,4 @@
-<h1>Editing Client</h1>
-
-<%= render 'form', client: @client %>
-
-<%= link_to 'Show', @client %> |
-<%= link_to 'Back', clients_path %>
+<h3 align="center">Editar Cliente</h3>
+<%= link_to '⬅ Lista de Clientes', clients_path %>
+<br><br>
+<%= render 'client', client: @client %>

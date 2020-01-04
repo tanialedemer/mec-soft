@@ -1,39 +1,56 @@
-<p id="notice"><%= notice %></p>
+<%= link_to '⬅ Lista de Compras', compras_path %>
+<h3 align="center">Compra</h3> <br>
+<div class="row">
+  <div class="col-4">
+    <p>
+      <strong>Fecha:</strong><br>
+      <td><%= @compra.fecha.strftime("%d/%m/%Y") %></td>
+    </p>
+  </div>
+  <div class="col-4">
+    <p>
+      <strong>Num fact:</strong><br>
+      <%= @compra.num_fact %>
+    </p>
+  </div>
+</div>
+  <p>
+    <strong>Proveedor:</strong>
+    <%= @compra.proveedor.nombre %>
+  </p>
 
+<hr>
+
+
+  <div class="panel-body" id="sale-details">
+          <%= (@compra.detalle_compras.count > 0) ? render(partial: 'detalle_compras/index', locals: { compra: @compra, show_actions: true }) : 'No hay detalles cargados' %>
+        </div>
+        <div align="center">
+          <div class="col-xs-2 col-xs-offset-5 text-center">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#modalProduct">Agregar producto</button>
+          </div>
+        </div>
+        <br>
 <p>
-  <strong>Fecha:</strong>
-  <%= @compra.fecha %>
+      <td class="thick-line text-right"><h3><strong>Total:</strong> <%= number_to_currency(@compra.total, unit: "Gs.") %></h3></td>
 </p>
 
-<p>
-  <strong>Proveedor:</strong>
-  <%= @compra.proveedor %>
-</p>
+<%= link_to 'Salir sin Guardar', @detalle_compra.compra, method: :delete, data: { confirm: 'Está seguro? Los datos no se guardarán.' } %>
 
-<p>
-  <strong>Num fact:</strong>
-  <%= @compra.num_fact %>
-</p>
 
-<p>
-  <strong>Total:</strong>
-  <%= @compra.total %>
-</p>
-
-<p>
-  <strong>Pago:</strong>
-  <%= @compra.pago %>
-</p>
-
-<p>
-  <strong>Saldo:</strong>
-  <%= @compra.saldo %>
-</p>
-
-<p>
-  <strong>Tipo factura:</strong>
-  <%= @compra.tipo_factura %>
-</p>
-
-<%= link_to 'Edit', edit_compra_path(@compra) %> |
-<%= link_to 'Back', compras_path %>
+   <!-- Modal -->
+      <div class="modal fade" id="modalProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Agregar producto</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" id="form_product">
+              <%= render 'detalle_compras/form', detalle_compra: @detalle_compra, compra: @compra %>
+            </div>
+          </div>
+        </div>
+      </div>

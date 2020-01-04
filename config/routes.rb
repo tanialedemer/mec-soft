@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
-  resources :detalle_compras
-  resources :compras
+  
+  resources :compras do
+    resources :detalle_compras
+  end
+
   resources :tipo_facturas
   resources :repuesto_servicios
   resources :categories
   resources :proveedors
+
   resources :clients do
   	resources :vehiculos
   end

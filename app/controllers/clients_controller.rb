@@ -21,6 +21,7 @@ class ClientsController < ApplicationController
 
   # GET /clients/1/edit
   def edit
+     @client = Client.find(params[:id])
   end
 
   # POST /clients
@@ -29,8 +30,8 @@ class ClientsController < ApplicationController
     @client = Client.new(client_params)
     respond_to do |format|
       if @client.save
-        format.html { redirect_to @client, notice: 'Client was successfully created.' }
-        format.json { render :show, status: :created, location: @client }
+        format.html { redirect_to clients_url, notice: 'Cliente creado exitosamente.' }
+        format.json { render :index, status: :created, location: @client }
       else
         format.html { render :new }
         format.json { render json: @client.errors, status: :unprocessable_entity }
@@ -41,10 +42,9 @@ class ClientsController < ApplicationController
   # PATCH/PUT /clients/1
   # PATCH/PUT /clients/1.json
   def update
-    @vehiculo = client.vehiculo.new
     respond_to do |format|
-      if @client.update(client_params)
-        format.html { redirect_to @client, notice: 'Client was successfully updated.' }
+      if @client.update(client_edit_params)
+        format.html { redirect_to @client, notice: 'Cliente actualizado exitosamente.' }
         format.json { render :show, status: :ok, location: @client }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class ClientsController < ApplicationController
   def destroy
     @client.destroy
     respond_to do |format|
-      format.html { redirect_to clients_url, notice: 'Client was successfully destroyed.' }
+      format.html { redirect_to clients_url, notice: 'Cliente eliminado exitosamente.' }
       format.json { head :no_content }
     end
   end
@@ -73,5 +73,9 @@ class ClientsController < ApplicationController
     def client_params
       params.require(:client).permit(:ruc, :nombre, :apellido, :direccion, :telefono, :email,
         vehiculos_attributes: [:client_id, :modelo, :color, :matricula, :marca, :km, :chasis, :year_fab])
+    end
+    # jj
+    def client_edit_params
+      params.require(:client).permit(:ruc, :nombre, :apellido, :direccion, :telefono, :email)
     end
 end

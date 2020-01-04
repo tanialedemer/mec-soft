@@ -66,3 +66,5 @@ gem 'nested_form', '~> 0.3.2'
 gem 'jquery-rails'
 #select2
 gem "select2-rails"
+#Use webpack to manage app-like JavaScript modules in Rails
+gem 'webpacker', git: 'https://github.com/rails/webpacker.git'

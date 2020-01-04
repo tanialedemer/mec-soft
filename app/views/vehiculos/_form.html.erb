@@ -11,47 +11,51 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :client_id %>
-     <%= form.collection_select(:client, Client.all, :id, :nombre_apellido_ruc, {prompt: "Seleccionar un cliente"}, {:class=>'js-searchable'})%>
+
+ <div class="form-group">
+    <%= form.label :client_id ,"Ciente"%> <br>
+    <%= form.collection_select :client_id, Client.order(:nombre), :id, :nombre_apellido_ruc, {prompt: "Seleccionar un Cliente"},{:class=> "chosen-select form-control  js-example-matcher-start"} %>
   </div>
 
-  <div class="field">
+<div class="row">
+  <div class="form-group col">
     <%= form.label :modelo %>
-    <%= form.text_field :modelo %>
+    <%= form.text_field :modelo, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group col">
     <%= form.label :color %>
-    <%= form.text_field :color %>
+    <%= form.text_field :color, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group col">
     <%= form.label :matricula %>
-    <%= form.text_field :matricula %>
+    <%= form.text_field :matricula, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group col">
     <%= form.label :marca %>
-    <%= form.text_field :marca %>
+    <%= form.text_field :marca, class:"form-control" %>
   </div>
+</div>
 
-  <div class="field">
+<div class="row">
+  <div class="form-group col">
     <%= form.label :km %>
-    <%= form.text_field :km %>
+    <%= form.text_field :km, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group col">
     <%= form.label :chasis %>
-    <%= form.text_field :chasis %>
+    <%= form.text_field :chasis, class:"form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :year_fab %>
-    <%= form.number_field :year_fab %>
+  <div class="form-group col">
+    <%= form.label :year_fab,"Año" %>
+    <%= form.number_field :year_fab, class:"form-control" %>
   </div>
-
+</div>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Guardar" , class:"form-control btn btn-success" %>
   </div>
 <% end %>
