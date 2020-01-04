@@ -28,7 +28,7 @@ class RepuestoServiciosController < ApplicationController
 
     respond_to do |format|
       if @repuesto_servicio.save
-        format.html { redirect_to repuesto_servicios_path, notice: 'Repuesto servicio was successfully created.' }
+        format.html { redirect_to repuesto_servicios_path, notice: 'Repuesto o Servicio fue creado con éxito.' }
         format.json { render :index, status: :created, location: @repuesto_servicio }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class RepuestoServiciosController < ApplicationController
   def update
     respond_to do |format|
       if @repuesto_servicio.update(repuesto_servicio_params)
-        format.html { redirect_to @repuesto_servicio, notice: 'Repuesto servicio was successfully updated.' }
+        format.html { redirect_to @repuesto_servicio, notice: 'Repuesto o Servicio fue actualizado con éxito.' }
         format.json { render :show, status: :ok, location: @repuesto_servicio }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class RepuestoServiciosController < ApplicationController
   def destroy
     @repuesto_servicio.destroy
     respond_to do |format|
-      format.html { redirect_to repuesto_servicios_url, notice: 'Repuesto servicio was successfully destroyed.' }
+      format.html { redirect_to repuesto_servicios_url, notice: 'Repuesto o Servicio fue eliminado con éxito.' }
       format.json { head :no_content }
     end
   end

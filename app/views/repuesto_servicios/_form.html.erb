@@ -10,38 +10,39 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :codigo %>
-    <%= form.text_field :codigo %>
+<div class="row">
+  <div class="form-group col">
+    <%= form.label :codigo, "Código" %>
+    <%= form.text_field :codigo,class:"form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :descripcion %>
-    <%= form.text_field :descripcion %>
+  <div class="form-group col">
+    <%= form.label :descripcion, "Descripción"  %>
+    <%= form.text_field :descripcion,class:"form-control" %>
   </div>
-
-  <div class="field">
+</div>
+<div class="row">
+  <div class="form-group col">
     <%= form.label :stock %>
-    <%= form.number_field :stock %>
+    <%= form.number_field :stock,class:"form-control",disabled: true %>
   </div>
 
-  <div class="field">
+  <div class="form-group col">
     <%= form.label :costo %>
-    <%= form.text_field :costo %>
+    <%= form.text_field :costo ,class:"form-control"%>
   </div>
 
-  <div class="field">
+  <div class="form-group col">
     <%= form.label :precio_venta %>
-    <%= form.text_field :precio_venta %>
+    <%= form.text_field :precio_venta,class:"form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :category_id %>
+  <div class="form-group col">
+    <%= form.label :category_id, "Categoria"  %><br>
     <%= form.collection_select(:category_id, Category.all, :id, :descripcion)%>
   </div>
-
+</div>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Guardar",class:"form-control btn btn-success"%>
   </div>
 <% end %>
