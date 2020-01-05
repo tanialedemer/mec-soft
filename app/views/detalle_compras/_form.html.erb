@@ -1,28 +1,32 @@
-<%= form_for([@compra,@detalle_compra], remote: true) do |form| %>
-
-<div  align="center">
+<%= form_for([@compra,DetalleCompra.new], local: true) do |form| %>
+<div>
 <!--   <div class="col-12">
   <div class="form-group">
     <%#= form.text_field :repuesto_servicio_id , placeholder: 'Artículo', class: 'form-control'%>
   </div> -->
+<div class="col-12">
  <div class="form-group">
     <%= form.label :repuesto_servicio_id ,"Artículo"%> <br>
     <%= form.collection_select :repuesto_servicio_id, RepuestoServicio.order(:descripcion), :id, :descripcion, {prompt: "Buscar Artículo"},{:class=> "chosen-select form-control js-example-matcher-start"} %>
   </div>
+</div>
   </div>
   <div class="col-12">
   <div class="form-group">
+    <%= form.label :cantidad%> <br>
     <%= form.text_field :cantidad, placeholder: 'Cantidad', class: 'form-control' %>
   </div>
   </div>
 
   <div class="col-12">
   <div class="form-group">
+    <%= form.label :precio_unitario ,"Precio Unitario"%> <br>
     <%= form.text_field :precio_unitario, placeholder: 'Precio Unitario', class: 'form-control' %>
   </div>
   </div>
   <div class="col-12">
   <div class="form-group">
+    <%= form.label :precio_venta ,"Precio Venta"%> <br>
     <%= form.text_field :precio_venta, placeholder: 'Precio Venta', class: 'form-control' %>
   </div>
   </div>

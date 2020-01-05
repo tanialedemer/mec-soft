@@ -34,10 +34,11 @@
 <p>
       <td class="thick-line text-right"><h3><strong>Total:</strong> <%= number_to_currency(@compra.total, unit: "Gs.") %></h3></td>
 </p>
-
-<%= link_to 'Salir sin Guardar', @detalle_compra.compra, method: :delete, data: { confirm: 'Está seguro? Los datos no se guardarán.' } %>
-
-
+<hr>
+<div class="row">
+<%= link_to 'Salir sin Guardar', @detalle_compra.compra, method: :delete, data: { confirm: 'Está seguro? Los datos no se guardarán.' }, class:"col btn btn-danger" %>
+<%= link_to 'Guardar', compra_id_detalle_path(@compra) , class:"col btn btn-primary" %>
+</div>
    <!-- Modal -->
       <div class="modal fade" id="modalProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

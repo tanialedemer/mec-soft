@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'compra/:id/detalle/', to: 'compras#detalle', as: 'compra_id_detalle'
   resources :compras do
     resources :detalle_compras
   end

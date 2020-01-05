@@ -1,5 +1,5 @@
 class ComprasController < ApplicationController
-  before_action :set_compra, only: [:show, :edit, :update, :destroy]
+  before_action :set_compra, only: [:show, :edit, :update, :destroy, :factura, :detalle]
 
   # GET /compras
   # GET /compras.json
@@ -10,25 +10,32 @@ class ComprasController < ApplicationController
   # GET /compras/1
   # GET /compras/1.json
   def show
+    @detalle_compra = DetalleCompra.new
+  end
+
+  def factura
+    @compra = Compra.find(params[:id])
   end
 
   # GET /compras/new
   def new
-    @compra = Compra.new
+    @compra = Compra.new(fecha: Date::current)
   end
 
   # GET /compras/1/edit
   def edit
   end
 
+  def detalle
+  end
   # POST /compras
   # POST /compras.json
   def create
     @compra = Compra.new(compra_params)
-
+    
     respond_to do |format|
       if @compra.save
-        format.html { redirect_to @compra, notice: 'Compra was successfully created.' }
+        format.html { redirect_to @compra, notice: 'Compra creado con éxito.' }
         format.json { render :show, status: :created, location: @compra }
       else
         format.html { render :new }
@@ -42,7 +49,7 @@ class ComprasController < ApplicationController
   def update
     respond_to do |format|
       if @compra.update(compra_params)
-        format.html { redirect_to @compra, notice: 'Compra was successfully updated.' }
+        format.html { redirect_to @compra, notice: 'Compra actualizado con éxito.' }
         format.json { render :show, status: :ok, location: @compra }
       else
         format.html { render :edit }
@@ -56,7 +63,7 @@ class ComprasController < ApplicationController
   def destroy
     @compra.destroy
     respond_to do |format|
-      format.html { redirect_to compras_url, notice: 'Compra was successfully destroyed.' }
+      format.html { redirect_to compras_url, notice: 'Compra eliminado con éxito.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +76,6 @@ class ComprasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def compra_params
-      params.require(:compra).permit(:fecha, :proveedor_id, :num_fact, :total, :pago, :saldo, :tipo_factura_id)
+      params.require(:compra).permit(:fecha, :proveedor_id, :tipo_factura_id, :num_fact, :total)
     end
 end

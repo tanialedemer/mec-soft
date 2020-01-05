@@ -1,0 +1,53 @@
+<%= link_to '⬅ Lista de Compras', compras_path %>
+<h3 align="center">Compra</h3> <br>
+<div class="row">
+  <div class="col-4">
+    <p>
+      <strong>Fecha:</strong><br>
+      <td><%= @compra.fecha.strftime("%d/%m/%Y") %></td>
+    </p>
+  </div>
+  <div class="col-4">
+    <p>
+      <strong>Num fact:</strong><br>
+      <%= @compra.num_fact %>
+    </p>
+  </div>
+</div>
+  <p>
+    <strong>Proveedor:</strong>
+    <%= @compra.proveedor.nombre %>
+  </p>
+
+<hr>
+
+<div align="center">
+<p>Detalle Compras</p>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Repuesto servicio</th>
+      <th>Cantidad</th>
+      <th>Precio unitario</th>
+      <th>Precio venta</th>
+      <th>Subtotal</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @compra.detalle_compras.each do |detalle_compra| %>
+      <tr>
+        <td><%= detalle_compra.repuesto_servicio.descripcion %></td>
+        <td><%= detalle_compra.cantidad %></td>
+        <td><%= detalle_compra.precio_unitario %></td>
+        <td><%= detalle_compra.precio_venta %></td>
+        <td><%= detalle_compra.subtotal %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+</div>
+<%#= link_to 'New Detalle Compra', new_detalle_compra_path %>
