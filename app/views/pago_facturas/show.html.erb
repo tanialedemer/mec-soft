@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Compra:</strong>
+  <%= @pago_factura.compra %>
+</p>
+
+<p>
+  <strong>Monto pago:</strong>
+  <%= @pago_factura.monto_pago %>
+</p>
+
+<%= link_to 'Edit', edit_pago_factura_path(@pago_factura) %>
+<%= link_to 'Ver estado de Factura',  compra_id_detalle_path(@pago_factura.compra) %> |
+<%= link_to 'Back', pago_facturas_path %>

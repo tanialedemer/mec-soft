@@ -1,0 +1,42 @@
+-----------  DETALLE COMPRA ------------------
+create function SP_Stock_Price() returns trigger
+as
+$$
+begin
+
+UPDATE repuesto_servicios SET stock=(stock+new.cantidad), costo=new.precio_unitario, precio_venta = new.precio_venta
+WHERE id=new.repuesto_servicio_id;
+
+return new;
+
+end
+$$
+
+Language plpgsql;
+
+------------------------
+create trigger TR_Stock_Price after insert on detalle_compras
+for each row
+execute procedure SP_Stock_Price();
+
+
+------------ DETALLE ORDEN TRABAJO --------------
+
+create function SP_Stock_Price_Orden() returns trigger
+as
+$$
+begin
+
+UPDATE repuesto_servicios SET stock=(stock-new.cantidad) WHERE id=new.repuesto_servicio_id;
+
+return new;
+
+end
+$$
+
+Language plpgsql;
+
+
+create trigger TR_Stock_Price_Orden after insert on detalle_orden_trabajos
+for each row
+execute procedure SP_Stock_Price_Orden();

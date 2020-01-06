@@ -29,6 +29,7 @@
         <td><%= compra.saldo %></td>
         <td><%= compra.tipo_factura.descripcion %></td>
         <td><%= link_to 'Detalles', compra_id_detalle_path(compra) %></td>
+        <td><%= link_to 'Agregar Pagos', new_pago_factura_path(:compra_id => compra.id) %></td>
         <td><%= link_to 'Editar', edit_compra_path(compra) %></td>
         <td><%= link_to 'Eliminar', compra, method: :delete, data: { confirm: 'Está seguro?' } %></td>
       </tr>

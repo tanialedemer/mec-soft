@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   
   get 'compra/:id/detalle/', to: 'compras#detalle', as: 'compra_id_detalle'
+  get 'compras/:compra_id/pago_factura/', to: 'compras#pago_factura', as: 'pago_factura_add'
+
+  resources :pago_facturas
+
   resources :compras do
     resources :detalle_compras
   end

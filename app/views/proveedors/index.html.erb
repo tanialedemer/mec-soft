@@ -24,6 +24,7 @@
         <td><%= proveedor.direccion %></td>
         <td><%= proveedor.telefono %></td>
         <td><%= proveedor.email %></td>
+        <td><%#= link_to 'Detalles', proveedor %></td>
         <td><%= link_to 'Editar', edit_proveedor_path(proveedor) %></td>
         <td><%= link_to 'Eliminar', proveedor, method: :delete, data: { confirm: 'Está seguro?' } %></td>
       </tr>

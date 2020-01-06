@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h3 align="center">Pago Facturas</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Compra</th>
+      <th>Monto de pago</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pago_facturas.each do |pago_factura| %>
+      <tr>
+        <td><%= pago_factura.compra.proveedor.nombre %></td>
+        <td><%= pago_factura.monto_pago %></td>
+        <td><%= link_to 'Ver estado de Factura',  compra_id_detalle_path(pago_factura.compra) %></td>
+        <td><%= link_to 'Editar', edit_pago_factura_path(pago_factura) %></td>
+        <td><%= link_to 'Eliminar', pago_factura, method: :delete, data: { confirm: 'Está seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%#= link_to 'Nuevo', new_pago_factura_path %>

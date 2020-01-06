@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_30_053915) do
+ActiveRecord::Schema.define(version: 2020_01_05_030757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,14 @@ ActiveRecord::Schema.define(version: 2019_12_30_053915) do
     t.index ["repuesto_servicio_id"], name: "index_detalle_compras_on_repuesto_servicio_id"
   end
 
+  create_table "pago_facturas", force: :cascade do |t|
+    t.bigint "compra_id"
+    t.float "monto_pago"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["compra_id"], name: "index_pago_facturas_on_compra_id"
+  end
+
   create_table "proveedors", force: :cascade do |t|
     t.integer "ruc"
     t.string "nombre"
@@ -105,6 +113,7 @@ ActiveRecord::Schema.define(version: 2019_12_30_053915) do
   add_foreign_key "compras", "tipo_facturas"
   add_foreign_key "detalle_compras", "compras"
   add_foreign_key "detalle_compras", "repuesto_servicios"
+  add_foreign_key "pago_facturas", "compras"
   add_foreign_key "repuesto_servicios", "categories"
   add_foreign_key "vehiculos", "clients"
 end

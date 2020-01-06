@@ -61,3 +61,15 @@
 <p>
       <td class="thick-line text-right"><h3><strong>Saldo:</strong> <%= number_to_currency(@compra.saldo, unit: "Gs.") %></h3></td>
 </p>
+
+ <%= form.fields_for :pago_facturas do |pago_form| %>
+  <strong>Recibos de pagos</strong>
+<hr>
+ <div class="form-group col">
+    <%= pago_form.label :monto_pago, "Año" %>
+    <%= pago_form.number_field :monto_pago, class:"form-control" %>
+  </div>
+   <div class="actions"><br>
+    <%= form.submit "Guardar", class:"form-control btn-success"%>
+  </div>
+<% end %>
