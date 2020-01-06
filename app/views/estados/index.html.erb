@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h3 align="center">Estados</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Descripción</th>
+      <th colspan="3">
+      <%= link_to 'Nuevo', new_estado_path, class:"btn btn-success" %>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @estados.each do |estado| %>
+      <tr>
+        <td><%= estado.descripcion %></td>
+        <td><%= link_to 'Editar', edit_estado_path(estado) %></td>
+        <td><%= link_to 'Eliminar', estado, method: :delete, data: { confirm: 'Está seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
