@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+<h3 align="center">Mecánicos</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th colspan="2">
+      <%= link_to 'Nuevo', new_mecanico_path, class:"btn btn-success" %>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mecanicos.each do |mecanico| %>
+      <tr>
+        <td><%= mecanico.nombre %></td>
+        <td><%= link_to 'Editar', edit_mecanico_path(mecanico) %></td>
+        <td><%= link_to 'Eliminar', mecanico, method: :delete, data: { confirm: 'Está seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
