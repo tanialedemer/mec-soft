@@ -1,0 +1,27 @@
+<div align="center">
+<p>Detalles</p>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Repuesto servicio</th>
+      <th>Cantidad</th>
+      <th>Precio venta</th>
+      <th>Subtotal</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orden_trabajo_presupuesto.detalle_ot_presupuestos.each do |detalle_ot_presupuesto| %>
+      <tr>
+        <td><%= detalle_ot_presupuesto.repuesto_servicio.descripcion%></td>
+        <td><%= detalle_ot_presupuesto.cantidad %></td>
+        <td><%= detalle_ot_presupuesto.precio_venta %></td>
+        <td><%= detalle_ot_presupuesto.subtotal %></td>
+        <td><%= link_to 'Eliminar', orden_trabajo_presupuesto_detalle_ot_presupuesto_path(@orden_trabajo_presupuesto, detalle_ot_presupuesto), method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

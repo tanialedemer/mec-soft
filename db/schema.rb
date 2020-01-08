@@ -2,15 +2,15 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
+# This file is the source Rails uses to define your schema when running `rails
+# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_07_222909) do
+ActiveRecord::Schema.define(version: 2020_01_07_234520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,18 @@ ActiveRecord::Schema.define(version: 2020_01_07_222909) do
     t.index ["repuesto_servicio_id"], name: "index_detalle_compras_on_repuesto_servicio_id"
   end
 
+  create_table "detalle_ot_presupuestos", force: :cascade do |t|
+    t.integer "cantidad"
+    t.float "precio_venta"
+    t.float "subtotal"
+    t.bigint "repuesto_servicio_id", null: false
+    t.bigint "orden_trabajo_presupuesto_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["orden_trabajo_presupuesto_id"], name: "index_detalle_ot_presupuestos_on_orden_trabajo_presupuesto_id"
+    t.index ["repuesto_servicio_id"], name: "index_detalle_ot_presupuestos_on_repuesto_servicio_id"
+  end
+
   create_table "estados", force: :cascade do |t|
     t.string "descripcion"
     t.datetime "created_at", null: false
@@ -69,6 +81,25 @@ ActiveRecord::Schema.define(version: 2020_01_07_222909) do
     t.string "nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "orden_trabajo_presupuestos", force: :cascade do |t|
+    t.date "fecha"
+    t.string "descripción"
+    t.bigint "client_id", null: false
+    t.integer "num_orden"
+    t.bigint "vehiculo_id", null: false
+    t.float "total"
+    t.bigint "estado_id", null: false
+    t.bigint "tipo_factura_id", null: false
+    t.bigint "mecanico_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_orden_trabajo_presupuestos_on_client_id"
+    t.index ["estado_id"], name: "index_orden_trabajo_presupuestos_on_estado_id"
+    t.index ["mecanico_id"], name: "index_orden_trabajo_presupuestos_on_mecanico_id"
+    t.index ["tipo_factura_id"], name: "index_orden_trabajo_presupuestos_on_tipo_factura_id"
+    t.index ["vehiculo_id"], name: "index_orden_trabajo_presupuestos_on_vehiculo_id"
   end
 
   create_table "pago_facturas", force: :cascade do |t|
@@ -125,6 +156,13 @@ ActiveRecord::Schema.define(version: 2020_01_07_222909) do
   add_foreign_key "compras", "tipo_facturas"
   add_foreign_key "detalle_compras", "compras"
   add_foreign_key "detalle_compras", "repuesto_servicios"
+  add_foreign_key "detalle_ot_presupuestos", "orden_trabajo_presupuestos"
+  add_foreign_key "detalle_ot_presupuestos", "repuesto_servicios"
+  add_foreign_key "orden_trabajo_presupuestos", "clients"
+  add_foreign_key "orden_trabajo_presupuestos", "estados"
+  add_foreign_key "orden_trabajo_presupuestos", "mecanicos"
+  add_foreign_key "orden_trabajo_presupuestos", "tipo_facturas"
+  add_foreign_key "orden_trabajo_presupuestos", "vehiculos"
   add_foreign_key "pago_facturas", "compras"
   add_foreign_key "repuesto_servicios", "categories"
   add_foreign_key "vehiculos", "clients"

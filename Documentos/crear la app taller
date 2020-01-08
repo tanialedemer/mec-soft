@@ -1,0 +1,49 @@
+----------- crear app ----------------
+rails new mecanica -d=postgresql
+------------ home --------------
+rails g controller home index
+------------- cliente ---------------- 
+rails g scaffold client ruc:integer nombre:string apellido:string direccion:string telefono:string email:string
+------------------ install bootstrap webpack -------------
+https://gorails.com/forum/install-bootstrap-with-webpack-with-rails-6-beta
+---------- install datatable ---
+ yarn add datatables.net-dt
+https://stackoverflow.com/questions/55850722/rails-6-yarn-datatables-issue
+------------------ install bower --------------
+https://bower.io/
+--------------- instegrar bootstrap ------------------
+https://www.youtube.com/watch?v=bn9arlhfaXc
+https://hackernoon.com/integrate-bootstrap-4-and-font-awesome-5-in-rails-6-u87u32zd
+-----------------------Webpacker--------------
+https://github.com/rails/webpacker
+https://github.com/rails/webpacker/blob/master/README.md#coffeescript
+--------------------- categoria -----------------------
+rails g scaffold category descripcion:string
+--------------------- repuesto servicio ------------------
+rails g scaffold repuesto_servicio codigo:string descripcion:string stock:integer costo:float precio_venta:float category:references
+------------------- proveedor --------------------
+rails g scaffold proveedor ruc:integer nombre:string direccion:string telefono:string email:string
+-------------------- compra ----------------
+rails g scaffold compra fecha:date proveedor:references num_fact:integer total:float pago:float saldo:float tipo_factura:references
+-------------------- detalle_compra -------------
+rails g scaffold detalle_compra compra:references repuesto_servicio:references cantidad:integer precio_unitario:float precio_venta:float subtotal:float
+---------------------- pago factura -----------
+rails g scaffold pago_factura compra:references monto_pago:float 
+--------------------- vehiculo ------------------
+rails g scaffold vehiculo cliente:references  modelo:string color:string matricula:string marca:string km:float chasis:string year_fab:integer
+-------------------- tipo factura -----------------
+rails g scaffold tipo_factura descripcion:string
+-------------------- cobro fatura ---------------
+rails g scaffold cobro_factura cobro_monto:float venta:references
+-------------------- copy proyect ventas -----------
+https://github.com/mmgerman89/shop
+------------------- estado ------------------
+rails g scaffold estado descripcion:string
+------------------- mecanico --------
+rails g scaffold mecanico nombre:string
+------------------ orden_trabajo_presupuesto ----------------
+rails g scaffold orden_trabajo_presupuesto fecha:date descripción:string cliente:references num_orden:integer vehiculo:references total:float estado:references tipo_factura:references mecanico:references
+------------------- detalle_orden_trabajo_presupuesto -------------
+rails g scaffold detalle_ot_presupuesto cantidad:integer precio_venta:float subtotal:float repuesto_servicio:references orden_trabajo_presupuesto:references
+-------------------- cobro_factura ----------------
+rails g scaffold cobro_factura cobro_monto:float orden_trabajo_presupuesto:references

@@ -1,0 +1,96 @@
+<h3 align="center">Orden de Trabajo- Presupuesto</h3> <br>
+<div class="row">
+  <div class="col-4">
+    <p>
+      <strong>Fecha:</strong><br>
+      <td><%= @orden_trabajo_presupuesto.fecha.strftime("%d/%m/%Y") %></td>
+    </p>
+  </div>
+  <div class="col-4">
+    <p>
+      <strong>Num Orden:</strong><br>
+      <%= @orden_trabajo_presupuesto.num_orden %>
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-4">
+  <p>
+  <strong>Estado:</strong>
+  <%= @orden_trabajo_presupuesto.estado.descripcion %>
+</p>
+</div>
+  <div class="col-4">
+<p>
+  <strong>Tipo factura:</strong>
+  <%= @orden_trabajo_presupuesto.tipo_factura.descripcion %>
+</p>
+</div>
+  <div class="col-4">
+<p>
+  <strong>Mecanico:</strong>
+  <%= @orden_trabajo_presupuesto.mecanico.nombre %>
+</p>
+</div>
+</div>
+<div class="container"><br>
+<p>Datos del Cliente</p>
+<hr>
+<p>
+  <strong>Cliente:</strong>
+  <%= @orden_trabajo_presupuesto.client.nombre %> , <%= @orden_trabajo_presupuesto.client.apellido %>
+
+</p>
+
+<p>
+  <strong>Vehiculo:</strong>
+  <%= @orden_trabajo_presupuesto.vehiculo.vehiculo %>
+</p>
+
+<hr>
+<p>
+  <strong>Descripción del trabajo a realizar:</strong>
+  <%= @orden_trabajo_presupuesto.descripción %>
+</p>
+<hr>
+</div>
+
+
+
+  <div class="panel-body" id="sale-details">
+          <%= (@orden_trabajo_presupuesto.detalle_ot_presupuestos.count > 0) ? render(partial: 'detalle_ot_presupuestos/index', locals: { orden_trabajo_presupuesto: @orden_trabajo_presupuesto, show_actions: true }) : 'No hay detalles cargados' %>
+        </div>
+        <div align="center">
+          <div class="col-xs-2 col-xs-offset-5 text-center">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#modalProduct">Agregar producto</button>
+          </div>
+        </div>
+        <br>
+<p>
+      <td class="thick-line text-right"><h3><strong>Total:</strong> <%= number_to_currency(@orden_trabajo_presupuesto.total, unit: "Gs.") %></h3></td>
+</p>
+<hr>
+<div class="row">
+<%#= link_to 'Salir sin Guardar', @detalle_ot_presupuesto.orden_trabajo_presupuesto, method: :delete, data: { confirm: 'Está seguro? Los datos no se guardarán.' }, class:"col btn btn-danger" %>
+<%#= link_to 'Guardar', compra_id_detalle_path(@compra) , class:"col btn btn-primary" %>
+</div>
+   <!-- Modal -->
+      <div class="modal fade" id="modalProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Agregar producto</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" id="form_product">
+              <%= render 'detalle_ot_presupuestos/form', detalle_ot_presupuestos: @detalle_ot_presupuestos, orden_trabajo_presupuesto: @orden_trabajo_presupuesto %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+<%= link_to 'Edit', edit_orden_trabajo_presupuesto_path(@orden_trabajo_presupuesto) %> |
+<%= link_to 'Back', orden_trabajo_presupuestos_path %>

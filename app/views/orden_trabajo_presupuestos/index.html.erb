@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h3 align="center">Orden Trabajo Presupuestos</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Descripción</th>
+      <th>Cliente</th>
+      <th>Núm orden</th>
+      <th>Total</th>
+      <th>Estado</th>
+      <th colspan="3">
+      <%= link_to 'Nuevo', new_orden_trabajo_presupuesto_path, class:"btn btn-success" %>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orden_trabajo_presupuestos.each do |orden_trabajo_presupuesto| %>
+      <tr>
+        <td><%= orden_trabajo_presupuesto.fecha.strftime("%d/%m/%Y") %></td>
+        <td><%= orden_trabajo_presupuesto.descripción %></td>
+        <td><%= orden_trabajo_presupuesto.client.nombre %>, <%= orden_trabajo_presupuesto.client.apellido %></td>
+        <td><%= orden_trabajo_presupuesto.num_orden %></td>
+        <td><%= orden_trabajo_presupuesto.total %></td>
+        <td><%= orden_trabajo_presupuesto.estado.descripcion %></td>
+        <td><%= link_to 'Detalles', orden_trabajo_presupuesto %></td>
+        <td><%= link_to 'Editar', edit_orden_trabajo_presupuesto_path(orden_trabajo_presupuesto) %></td>
+        <td><%= link_to 'Eliminar', orden_trabajo_presupuesto, method: :delete, data: { confirm: 'Está seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

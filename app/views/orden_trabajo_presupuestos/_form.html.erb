@@ -1,0 +1,74 @@
+<%= form_with(model: orden_trabajo_presupuesto, local: true) do |form| %>
+  <% if orden_trabajo_presupuesto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(orden_trabajo_presupuesto.errors.count, "error") %> prohibited this orden_trabajo_presupuesto from being saved:</h2>
+
+      <ul>
+        <% orden_trabajo_presupuesto.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col">
+    <div class="form-group">
+      <%= form.label :fecha %>
+      <%= form.date_field :fecha %>
+    </div>
+  </div>
+  <div class="col">
+    <div class="form-group">
+      <%= form.label :num_orden, 'Número' %>
+      <%= form.number_field :num_orden %>
+    </div>
+  </div>
+  <div class="col">
+   <div class="form-group">
+      <%= form.label :tipo_factura_id ,"Tipo de Factura"%>
+      <%= form.collection_select :tipo_factura_id, TipoFactura.order(:descripcion), :id, :descripcion,class: "chosen-select form-control" %>
+    </div>
+  </div>
+  </div>
+
+  <div class="row">
+  <div class="col-6">
+   <div class="form-group">
+      <%= form.label :estado_id ,"Estado"%> <br>
+      <%= form.collection_select :estado_id, Estado.order(:descripcion), :id, :descripcion,class: "chosen-select form-control" %>
+    </div>
+  </div>
+  <div class="col-6">
+   <div class="form-group">
+      <%= form.label :mecanico_id ,"Mecánico"%> <br>
+      <%= form.collection_select :mecanico_id, Mecanico.order(:nombre), :id, :nombre,class: "chosen-select form-control" %>
+    </div>
+  </div>
+  </div>
+  <div class="row">
+<div class="col-10">
+ <div class="form-group">
+    <%= form.label :client_id ,"Cliente"%> <br>
+    <%= form.collection_select :client_id, Client.order(:nombre), :id, :nombre, {prompt: "Seleccionar un Cliente"},{:class=> "chosen-select form-control"} %>
+  </div>
+</div>
+
+<div class="col-10">
+ <div class="form-group">
+    <%= form.label :vehiculo_id ,"Vehículo"%> <br>
+    <%= form.collection_select :vehiculo_id, Vehiculo.order(:matricula), :id, :vehiculo, {prompt: "Seleccionar un Vehículo"},{:class=> "chosen-select form-control"} %>
+  </div>
+</div>
+
+<div class="col-10">
+ <div class="form-group">
+    <%= form.label :descripción %><br>
+    <%= form.text_area :descripción, class:"form-control" %>
+  </div>
+  </div>
+</div>
+  <div class="actions">
+    <%= form.submit "Siguiente", class:"btn btn-success form-control" %>
+  </div>
+<% end %>

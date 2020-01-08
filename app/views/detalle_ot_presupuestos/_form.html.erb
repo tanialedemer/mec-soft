@@ -1,0 +1,43 @@
+<%= form_for([@orden_trabajo_presupuesto, DetalleOtPresupuesto.new], local: true) do |form| %>
+<div>
+<!--   <#% if @detalle_ot_presupuesto.errors.any? %>
+    <div id="error_explanation">
+      <h2><#%= pluralize(detalle_ot_presupuesto.errors.count, "error") %> prohibited this detalle_ot_presupuesto from being saved:</h2>
+
+      <ul>
+        <#% detalle_ot_presupuesto.errors.full_messages.each do |message| %>
+          <li><#%= message %></li>
+        <#% end %>
+      </ul>
+    </div>
+  <#% end %>
+ -->
+ <div class="col-12">
+ <div class="form-group">
+    <%= form.label :repuesto_servicio_id ,"Artículo"%> <br>
+    <%= form.collection_select :repuesto_servicio_id, RepuestoServicio.order(:descripcion), :id, :descripcion, {prompt: "Buscar Artículo"},{:class=> "chosen-select form-control js-example-matcher-start"} %>
+  </div>
+</div>
+  </div>
+  <div class="col-12">
+  <div class="form-group">
+    <%= form.label :cantidad%> <br>
+    <%= form.text_field :cantidad, placeholder: 'Cantidad', class: 'form-control' %>
+  </div>
+  </div>
+
+  <div class="col-12">
+  <div class="form-group">
+    <%= form.label :precio_venta ,"Precio Venta"%> <br>
+    <%= form.text_field :precio_venta, placeholder: 'Precio Venta', class: 'form-control' %>
+  </div>
+  </div>
+</div>
+<br>
+  <div class="modal-footer">
+  <div class="actions">
+    <%= form.submit 'Guardar', class: 'btn btn-success form-control' %>
+  </div>
+  </div>
+
+<% end %>

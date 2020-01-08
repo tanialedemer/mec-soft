@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   
+  
+  resources :orden_trabajo_presupuestos do 
+    resources :detalle_ot_presupuestos 
+  end
+  
   resources :mecanicos
   resources :estados
   get 'compra/:id/detalle/', to: 'compras#detalle', as: 'compra_id_detalle'

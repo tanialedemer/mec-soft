@@ -7,4 +7,7 @@ class Vehiculo < ApplicationRecord
   validates :km, presence: true
   validates :chasis, presence: true, uniqueness: true
 
+def vehiculo
+	"Modelo: #{modelo}, Marca: #{marca}, Matrícula: #{matricula}, Año: #{year_fab}"
+end
 end

@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fecha: 2020-01-07
+  descripción: MyString
+  cliente: one
+  num_orden: 1
+  vehiculo: one
+  total: 1.5
+  estado: one
+  tipo_factura: one
+  mecanico: one
+
+two:
+  fecha: 2020-01-07
+  descripción: MyString
+  cliente: two
+  num_orden: 1
+  vehiculo: two
+  total: 1.5
+  estado: two
+  tipo_factura: two
+  mecanico: two

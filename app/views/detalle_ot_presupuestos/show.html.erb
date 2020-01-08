@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cantidad:</strong>
+  <%= @detalle_ot_presupuesto.cantidad %>
+</p>
+
+<p>
+  <strong>Precio venta:</strong>
+  <%= @detalle_ot_presupuesto.precio_venta %>
+</p>
+
+<p>
+  <strong>Subtotal:</strong>
+  <%= @detalle_ot_presupuesto.subtotal %>
+</p>
+
+<p>
+  <strong>Repuesto servicio:</strong>
+  <%= @detalle_ot_presupuesto.repuesto_servicio_id %>
+</p>
+
+<p>
+  <strong>Orden trabajo presupuesto:</strong>
+  <%= @detalle_ot_presupuesto.orden_trabajo_presupuesto_id %>
+</p>
+
+<%= link_to 'Edit', edit_detalle_ot_presupuesto_path(@detalle_ot_presupuesto) %> |
+<%= link_to 'Back', detalle_ot_presupuestos_path %>

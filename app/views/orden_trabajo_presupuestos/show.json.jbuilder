@@ -1,0 +1,1 @@
+json.partial! "orden_trabajo_presupuestos/orden_trabajo_presupuesto", orden_trabajo_presupuesto: @orden_trabajo_presupuesto
