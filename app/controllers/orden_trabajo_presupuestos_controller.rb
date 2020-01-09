@@ -1,5 +1,5 @@
 class OrdenTrabajoPresupuestosController < ApplicationController
-  before_action :set_orden_trabajo_presupuesto, only: [:show, :edit, :update, :destroy]
+  before_action :set_orden_trabajo_presupuesto, only: [:show, :edit, :update, :destroy, :detalle]
 
   # GET /orden_trabajo_presupuestos
   # GET /orden_trabajo_presupuestos.json
@@ -22,6 +22,9 @@ class OrdenTrabajoPresupuestosController < ApplicationController
   def edit
   end
 
+  def detalle
+  end
+
   # POST /orden_trabajo_presupuestos
   # POST /orden_trabajo_presupuestos.json
   def create
@@ -29,7 +32,7 @@ class OrdenTrabajoPresupuestosController < ApplicationController
 
     respond_to do |format|
       if @orden_trabajo_presupuesto.save
-        format.html { redirect_to @orden_trabajo_presupuesto, notice: 'Orden trabajo presupuesto was successfully created.' }
+        format.html { redirect_to @orden_trabajo_presupuesto, notice: 'Los datos fueron creados exiosamente.' }
         format.json { render :show, status: :created, location: @orden_trabajo_presupuesto }
       else
         format.html { render :new }
@@ -43,7 +46,7 @@ class OrdenTrabajoPresupuestosController < ApplicationController
   def update
     respond_to do |format|
       if @orden_trabajo_presupuesto.update(orden_trabajo_presupuesto_params)
-        format.html { redirect_to @orden_trabajo_presupuesto, notice: 'Orden trabajo presupuesto was successfully updated.' }
+        format.html { redirect_to @orden_trabajo_presupuesto, notice: 'Los datos fueron actualizados exiosamente.' }
         format.json { render :show, status: :ok, location: @orden_trabajo_presupuesto }
       else
         format.html { render :edit }
@@ -57,7 +60,7 @@ class OrdenTrabajoPresupuestosController < ApplicationController
   def destroy
     @orden_trabajo_presupuesto.destroy
     respond_to do |format|
-      format.html { redirect_to orden_trabajo_presupuestos_url, notice: 'Orden trabajo presupuesto was successfully destroyed.' }
+      format.html { redirect_to orden_trabajo_presupuestos_url, notice: 'Los datos fueron eliminados exiosamente.' }
       format.json { head :no_content }
     end
   end

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :mecanicos
   resources :estados
   get 'compra/:id/detalle/', to: 'compras#detalle', as: 'compra_id_detalle'
+  get 'orden_trabajo_presupuesto/:id/detalle/', to: 'orden_trabajo_presupuestos#detalle', as: 'orden_trabajo_presupuesto_id_detalle'
+
   # get 'compras/:compra_id/pago_factura/', to: 'compras#pago_factura', as: 'pago_factura_add'
 
   resources :pago_facturas

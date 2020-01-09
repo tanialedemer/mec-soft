@@ -26,7 +26,7 @@
         <td><%= orden_trabajo_presupuesto.num_orden %></td>
         <td><%= orden_trabajo_presupuesto.total %></td>
         <td><%= orden_trabajo_presupuesto.estado.descripcion %></td>
-        <td><%= link_to 'Detalles', orden_trabajo_presupuesto %></td>
+        <td><%= link_to 'Detalles', orden_trabajo_presupuesto_id_detalle_path(orden_trabajo_presupuesto) %></td>
         <td><%= link_to 'Editar', edit_orden_trabajo_presupuesto_path(orden_trabajo_presupuesto) %></td>
         <td><%= link_to 'Eliminar', orden_trabajo_presupuesto, method: :delete, data: { confirm: 'Está seguro?' } %></td>
       </tr>

@@ -1,0 +1,84 @@
+<h3 align="center">Orden de Trabajo- Presupuesto</h3> <br>
+<%= link_to '⬅ Lista de Presupuestos', orden_trabajo_presupuestos_path %>
+<br><br>
+<div class="row">
+  <div class="col-4">
+    <p>
+      <strong>Fecha:</strong><br>
+      <td><%= @orden_trabajo_presupuesto.fecha.strftime("%d/%m/%Y") %></td>
+    </p>
+  </div>
+  <div class="col-4">
+    <p>
+      <strong>Num Orden:</strong><br>
+      <%= @orden_trabajo_presupuesto.num_orden %>
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-4">
+  <p>
+  <strong>Estado:</strong>
+  <%= @orden_trabajo_presupuesto.estado.descripcion %>
+</p>
+</div>
+  <div class="col-4">
+<p>
+  <strong>Tipo factura:</strong>
+  <%= @orden_trabajo_presupuesto.tipo_factura.descripcion %>
+</p>
+</div>
+  <div class="col-4">
+<p>
+  <strong>Mecanico:</strong>
+  <%= @orden_trabajo_presupuesto.mecanico.nombre %>
+</p>
+</div>
+</div>
+<div class="container"><br>
+<p>Datos del Cliente</p>
+<hr>
+<p>
+  <strong>Cliente:</strong>
+  <%= @orden_trabajo_presupuesto.client.nombre %> , <%= @orden_trabajo_presupuesto.client.apellido %>
+
+</p>
+
+<p>
+  <strong>Vehiculo:</strong>
+  <%= @orden_trabajo_presupuesto.vehiculo.vehiculo %>
+</p>
+
+<hr>
+<p>
+  <strong>Descripción del trabajo a realizar:</strong>
+  <%= @orden_trabajo_presupuesto.descripción %>
+</p>
+<hr>
+</div>
+
+<div align="center">
+<p>Detalles</p>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Repuesto servicio</th>
+      <th>Cantidad</th>
+      <th>Precio venta</th>
+      <th>Subtotal</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orden_trabajo_presupuesto.detalle_ot_presupuestos.each do |detalle_ot_presupuesto| %>
+      <tr>
+        <td><%= detalle_ot_presupuesto.repuesto_servicio.descripcion%></td>
+        <td><%= detalle_ot_presupuesto.cantidad %></td>
+        <td><%= detalle_ot_presupuesto.precio_venta %></td>
+        <td><%= detalle_ot_presupuesto.subtotal %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
