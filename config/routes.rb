@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
   
+  devise_for :users
   resources :orden_trabajo_presupuestos do 
     resources :detalle_ot_presupuestos 
   end

@@ -68,3 +68,8 @@ gem 'jquery-rails'
 gem "select2-rails"
 #Use webpack to manage app-like JavaScript modules in Rails
 gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
+#Aunteticate user
+gem 'devise'
+gem 'devise-bootstrap-views'
+#traduccion
+gem 'devise-i18n'

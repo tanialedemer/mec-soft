@@ -44,6 +44,11 @@ rails g scaffold mecanico nombre:string
 ------------------ orden_trabajo_presupuesto ----------------
 rails g scaffold orden_trabajo_presupuesto fecha:date descripción:string cliente:references num_orden:integer vehiculo:references total:float estado:references tipo_factura:references mecanico:references
 ------------------- detalle_orden_trabajo_presupuesto -------------
+
+
+------------------ devise---------------
+https://guides.railsgirls.com/devise
+https://github.com/hisea/devise-bootstrap-views
 rails g scaffold detalle_ot_presupuesto cantidad:integer precio_venta:float subtotal:float repuesto_servicio:references orden_trabajo_presupuesto:references
 -------------------- cobro_factura ----------------
 rails g scaffold cobro_factura cobro_monto:float orden_trabajo_presupuesto:references
