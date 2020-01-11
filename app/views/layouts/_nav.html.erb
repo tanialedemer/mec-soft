@@ -1,14 +1,30 @@
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item active">
-        <p class="navbar-text float-right">
-		<% if user_signed_in? %>
-		  Logged in as <strong><%= current_user.email %></strong>.
-		  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-		  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-		<% else %>
-		  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-		  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-		<% end %>
-		</p>
-    </li>
-  </ul>
+              <!--Navbar -->
+            <nav class="mb-4 navbar navbar-expand-lg navbar navbar-expand-lg navbar-dark teal mb-4">
+                <a class="navbar-brand" href="#">MotorBox</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-3" aria-controls="navbarSupportedContent-3" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent-3">
+                    <ul class="navbar-nav ml-auto nav-flex-icons">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> 
+                                </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-unique" aria-labelledby="navbarDropdownMenuLink">
+                            	<% if user_signed_in? %>
+                            	<a class="dropdown-item" href="#">
+								  Conectado como <strong><%= current_user.email %></strong>.
+								  <%= link_to 'Editar perfil', edit_user_registration_path, :class => 'navbar-link' %> </a>
+								  <a class="dropdown-item" href="#">
+								  <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %> </a>
+								<% else %>
+								<a class="dropdown-item" href="#">
+								  <%= link_to "Regístrate", new_user_registration_path, :class => 'navbar-link'  %> </a>
+								  <a class="dropdown-item" href="#">
+								  <%= link_to "Iniciar sesión", new_user_session_path, :class => 'navbar-link'  %> </a>	
+								<% end %>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!--/.Navbar -->
