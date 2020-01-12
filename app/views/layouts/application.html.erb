@@ -18,7 +18,9 @@
 
   <body>
     <%= render "layouts/nav"%>
-    <div class="container jumbotron">
+    <%= render "layouts/left"%>
+
+    <div class="container content jumbotron">
       <% if notice %>
         <p class="alert alert-success"><%= notice %></p>
       <% end %>

@@ -44,3 +44,4 @@ $(".js-example-matcher-start").select2({
   matcher: matchStart,
   theme: "bootstrap"
 });
+
