@@ -26,22 +26,19 @@ import "regenerator-runtime/runtime";
 import "bootstrap";
 import "../stylesheets/application";
 import "./custom";
+import "select2";
 
+import $ from 'jquery';
+global.$ = jQuery;
+
+// JavaScript
+let webpackContext = require.context('../javascripts', true, /\.js$/)
+for(let key of webpackContext.keys()) { webpackContext(key) }
+// Stylesheets
+require.context('../stylesheets', true, /\.sass$/)
 
 //datatables.net
 $(document).ready( function () {
     $('#table_id').DataTable();
 } );
 //select2
-$(document).ready(function(){
-  // Turn on js-selectable class so that it becomes SELCT 2 tag
-  $('.js-searchable').select2({
-    // If you are using Bootstrap, please add　`theme: "bootstrap"` too.
-    theme: "bootstrap"
-  });
-});
-$(".js-example-matcher-start").select2({
-  matcher: matchStart,
-  theme: "bootstrap"
-});
-
