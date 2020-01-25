@@ -27,6 +27,8 @@ import "bootstrap";
 import "../stylesheets/application";
 import "./custom";
 import "select2";
+import "datatables.net-bs4";
+import "datatables.net/js/jquery.dataTables.js";
 
 import $ from 'jquery';
 global.$ = jQuery;
@@ -38,7 +40,5 @@ for(let key of webpackContext.keys()) { webpackContext(key) }
 require.context('../stylesheets', true, /\.sass$/)
 
 //datatables.net
-$(document).ready( function () {
-    $('#table_id').DataTable();
-} );
+
 //select2

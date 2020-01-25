@@ -11,16 +11,18 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
-    
+
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 
   </head>
 
   <body>
+    <% if user_signed_in? %>
     <%= render "layouts/nav"%>
     <%= render "layouts/left"%>
+    <% end %>
 
-    <div class="container content jumbotron">
+    <div class="container container-fluid content jumbotron form-group">
       <% if notice %>
         <p class="alert alert-success"><%= notice %></p>
       <% end %>

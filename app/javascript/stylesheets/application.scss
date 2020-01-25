@@ -1,21 +1,26 @@
 @import "bootstrap";
 @import "~bootstrap/scss/bootstrap";
 @import "~select2/dist/css/select2";
+@import "datatables.net-bs4/css/dataTables.bootstrap4.css";
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
 
 body {
   font-family: Arial;
   background: #f1f1f1;
+
 }
 .content {
 	padding: 0 0 0 270px;
 }
 .container {
 	width: 100%;
-	float: left;
 	overflow: hidden;
-}
 
+}
+.login{
+  width: 360px;
+  margin: 2% auto;
+}
 ///// sidebar ////
 
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,200);
